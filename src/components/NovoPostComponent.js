@@ -31,7 +31,7 @@ export class NovoPostComponent extends React.Component {
         };
         PostAPI.add(obj).then((resp) => {
             toast.success("Publicação realizada!")
-            this.setState({ texto: "" })
+            this.setState({ texto: "",titulo:""})
             this.props.onSearchPosts();
         }).catch((error) => {
             toast.error("Error: " + error);
