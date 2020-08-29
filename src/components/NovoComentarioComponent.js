@@ -25,6 +25,8 @@ export class NovoComentarioComponent extends React.Component {
 
         CommentAPI.add(obj).then((result) => {
             alert("Comentário Salvo!");
+            this.setState({ texto: "" })
+            this.props.onSearchComments();
         }).catch((error) => {
             alert("Error: " + error);
             debugger;

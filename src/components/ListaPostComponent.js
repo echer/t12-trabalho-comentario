@@ -4,27 +4,10 @@ import { ComentarioComponent } from "./ComentarioComponent";
 
 export class ListaPostComponent extends React.Component {
 
-    state = {
-        results: []
-    };
-
-    componentDidMount() {
-        this.findAll();
-    }
-
-    findAll() {
-        PostAPI.getAll().then((posts) => {
-            this.setState({ results: posts.data });
-        }).catch((error) => {
-            alert("Error: " + error);
-            debugger;
-        });
-    }
-
     incCurtida(post) {
         post.likes = post.likes + 1;
         PostAPI.update(post).then((result) => {
-            this.findAll();
+            this.props.onSearchPosts();
         }).catch((error) => {
             alert("Error: " + error);
             debugger;
@@ -32,10 +15,10 @@ export class ListaPostComponent extends React.Component {
     }
 
     getResults() {
-        if (this.state.results && this.state.results.length > 0) {
+        if (this.props.results && this.props.results.length > 0) {
             return (
                 <>
-                    {this.state.results.map((r) =>
+                    {this.props.results.map((r) =>
                         (
                             <div key={r.uuid}>
                                 <div className="card-body">

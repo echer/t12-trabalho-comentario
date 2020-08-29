@@ -4,25 +4,19 @@ import { CommentAPI } from "../api/CommentAPI";
 export class ListaComentarioComponent extends React.Component {
 
     state = {
-        results: []
+        
     };
 
+
     componentDidMount() {
-        if (this.props.uuid && this.props.uuid !== "") {
-            CommentAPI.getAll(this.props.uuid).then((comentarios) => {
-                this.setState({ results: comentarios.data });
-            }).catch((error) => {
-                alert("Error: " + error);
-                debugger;
-            });
-        }
+        
     }
 
     getResults() {
-        if (this.state.results && this.state.results.length > 0) {
+        if (this.props.results && this.props.results.length > 0) {
             return (
                 <>
-                    {this.state.results.map((r) =>
+                    {this.props.results.map((r) =>
                         (
                             <div key={r.uuid}>
                                 <div className="card">

@@ -20,7 +20,13 @@ export class NovoPostComponent extends React.Component {
             texto: this.state.texto,
             likes: 0
         };
-        PostAPI.add(obj);
+        PostAPI.add(obj).then((resp) => {
+            this.setState({ texto: "" })
+            this.props.onSearchPosts();
+        }).catch((error) => {
+            alert("Error: " + error);
+            debugger;
+        });
 
         alert("Post Salvo!");
 
