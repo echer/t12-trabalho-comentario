@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-import { NovoPostComponent } from './components/NovoPostComponent';
-import { ComentarioComponent } from './components/ComentarioComponent';
+import { FeedComponent } from './components/FeedComponent';
 
 function App() {
   return (
-    <div className="container">
-      <ComentarioComponent></ComentarioComponent>
-      <NovoPostComponent></NovoPostComponent>
+    <div className="container container-fluig">
+      <FeedComponent></FeedComponent>
     </div>
   );
 }

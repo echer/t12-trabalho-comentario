@@ -29,12 +29,23 @@ export class NovoPostComponent extends React.Component {
     render() {
         return (
             <>
-                <h3>Novo Post</h3>
-                <textarea
-                    value={this.state.texto}
-                    onChange={(event) => this.setPost(event)}
-                ></textarea>
-                <button type="button" onClick={(event) => this.save(event)}>Publicar</button>
+                <div className="card">
+                    <div className="card-header">
+                        <h5 className="card-title">Novo Post</h5>
+                    </div>
+                    <div className="card-body">
+                        <div className="form-group">
+                            <textarea className="form-control"
+                                id="novo-post"
+                                value={this.state.texto}
+                                onChange={(event) => this.setPost(event)}
+                            ></textarea>
+                            <small id="novo-post" className="form-text text-muted">Digite o conteúdo da sua publicação!</small>
+                        </div>
+
+                        <button className="btn btn-primary" type="button" onClick={(event) => this.save(event)}>Publicar</button>
+                    </div>
+                </div>
             </>
         );
     }

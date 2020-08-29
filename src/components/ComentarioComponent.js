@@ -14,8 +14,8 @@ export class ComentarioComponent extends React.Component {
 
     render() {
         return <>
-            <ListaComentarioComponent></ListaComentarioComponent>
-            <NovoComentarioComponent></NovoComentarioComponent>
+            <ListaComentarioComponent uuid={this.props.uuid}></ListaComentarioComponent>
+            <NovoComentarioComponent uuid={this.props.uuid}></NovoComentarioComponent>
         </>
     };
 }

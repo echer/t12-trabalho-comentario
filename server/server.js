@@ -36,8 +36,19 @@ express.use(
   })
 );
 
-express.get("/comentarios", function (request, response) {
-  response.json(comentarios);
+express.get("/comentarios/:uuid", function (request, response) {
+  var uuid = request.params["uuid"];
+  var promise = new Promise((resolve, reject) => {
+    resolve(
+      comentarios.filter((obj) => {
+        return obj.uuidPost == uuid;
+      })
+    );
+  });
+  promise.then((comentarios) => {
+    console.log(JSON.stringify(comentarios));
+    response.json(comentarios);
+  });
 });
 
 // Get all
@@ -70,7 +81,8 @@ express.put("/posts/:uuid", function (request, response) {
     );
   });
   promise.then((post) => {
-    response.json(post);
+    post.likes = request.body.likes;
+    response.json();
   });
 });
 
