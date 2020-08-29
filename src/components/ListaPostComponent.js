@@ -2,6 +2,7 @@ import React from "react";
 import { PostAPI } from "../api/PostAPI";
 import { ComentarioComponent } from "./ComentarioComponent";
 import { Rss, SuitHeart, Clock, InfoCircle, PersonCircle } from 'react-bootstrap-icons';
+import { toast } from "react-toastify";
 
 export class ListaPostComponent extends React.Component {
 
@@ -10,7 +11,7 @@ export class ListaPostComponent extends React.Component {
         PostAPI.update(post).then((result) => {
             this.props.onSearchPosts();
         }).catch((error) => {
-            alert("Error: " + error);
+            toast.error("Error: " + error);
             debugger;
         });
     }

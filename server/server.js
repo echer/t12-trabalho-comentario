@@ -46,26 +46,36 @@ express.get("/comentarios/:uuid", function (request, response) {
     );
   });
   promise.then((comentarios) => {
+    comentarios.sort(function(a,b){
+      return a.time > b.time ? 1 : -1;
+    });
     response.json(comentarios);
   });
 });
 
 // Get all
 express.get("/posts", function (request, response) {
+  posts.sort(function(a,b){
+    return a.time > b.time ? -1 : 1;
+  });
   response.json(posts);
 });
 
 // Create
 express.post("/comentarios", function (request, response) {
   request.body["uuid"] = uuidv4();
-  request.body["datahora"] = getCurrent();
+  let today = new Date();
+  request.body["datahora"] = getCurrent(today);
+  request.body["time"] = today.getTime();
   comentarios.push(request.body);
   response.json();
 });
 
 express.post("/posts", function (request, response) {
   request.body["uuid"] = uuidv4();
-  request.body["datahora"] = getCurrent();
+  let today = new Date();
+  request.body["datahora"] = getCurrent(today);
+  request.body["time"] = today.getTime();
   posts.push(request.body);
   response.json();
 });
@@ -96,8 +106,7 @@ function uuidv4() {
   });
 }
 
-function getCurrent() {
-  let today = new Date();
+function getCurrent(today) {
   let dd = today.getDate();
   var hours = today.getHours();
   var minutes = today.getMinutes();

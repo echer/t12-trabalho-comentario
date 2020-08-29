@@ -2,8 +2,10 @@ import React from "react";
 import { NovoComentarioComponent } from './NovoComentarioComponent';
 import { ListaComentarioComponent } from './ListaComentarioComponent';
 import { CommentAPI } from "../api/CommentAPI";
+import { ToastContainer, toast } from 'react-toastify';
 
 export class ComentarioComponent extends React.Component {
+
     state = {
         results: []
     };
@@ -16,7 +18,7 @@ export class ComentarioComponent extends React.Component {
         CommentAPI.getAll(this.props.uuid).then((_results) => {
             this.setState({ results: _results.data });
         }).catch((error) => {
-            alert("Error: " + error);
+            toast.error("Error: " + error);
             debugger;
         });
     }

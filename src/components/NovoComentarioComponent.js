@@ -1,6 +1,7 @@
 import React from "react";
 import { CommentAPI } from "../api/CommentAPI";
 import { Check2, PlusCircle, InfoCircle } from "react-bootstrap-icons";
+import { toast } from "react-toastify";
 
 export class NovoComentarioComponent extends React.Component {
 
@@ -15,7 +16,7 @@ export class NovoComentarioComponent extends React.Component {
 
     save(event) {
         if (this.state.texto === "") {
-            alert("Digite o comentário!");
+            toast.warn("Digite o comentário!");
             return;
         }
 
@@ -25,11 +26,11 @@ export class NovoComentarioComponent extends React.Component {
         };
 
         CommentAPI.add(obj).then((result) => {
-            alert("Comentário Salvo!");
+            toast.success("Comentário Salvo!")
             this.setState({ texto: "" })
             this.props.onSearchComments();
         }).catch((error) => {
-            alert("Error: " + error);
+            toast.error("Error: " + error);
             debugger;
         });
 

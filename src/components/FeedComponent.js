@@ -2,6 +2,7 @@ import React from "react";
 import { NovoPostComponent } from './NovoPostComponent';
 import { ListaPostComponent } from "./ListaPostComponent";
 import { PostAPI } from "../api/PostAPI";
+import { toast } from "react-toastify";
 
 export class FeedComponent extends React.Component {
     state = {
@@ -16,7 +17,7 @@ export class FeedComponent extends React.Component {
         PostAPI.getAll().then((_results) => {
             this.setState({ results: _results.data });
         }).catch((error) => {
-            alert("Error: " + error);
+            toast.error("Error: " + error);
             debugger;
         });
     }

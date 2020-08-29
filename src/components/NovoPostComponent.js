@@ -1,6 +1,7 @@
 import React from "react";
 import { PostAPI } from "../api/PostAPI";
 import { PlusCircle, Check2, InfoCircle } from "react-bootstrap-icons";
+import { toast } from "react-toastify";
 
 export class NovoPostComponent extends React.Component {
     state = {
@@ -13,7 +14,7 @@ export class NovoPostComponent extends React.Component {
 
     save(event) {
         if (this.state.texto === "") {
-            alert("Digite o post!");
+            toast.warn("Digite o post!");
             return;
         }
 
@@ -22,15 +23,13 @@ export class NovoPostComponent extends React.Component {
             likes: 0
         };
         PostAPI.add(obj).then((resp) => {
+            toast.success("Publicação realizada!")
             this.setState({ texto: "" })
             this.props.onSearchPosts();
         }).catch((error) => {
-            alert("Error: " + error);
+            toast.error("Error: " + error);
             debugger;
         });
-
-        alert("Post Salvo!");
-
     }
 
     render() {
