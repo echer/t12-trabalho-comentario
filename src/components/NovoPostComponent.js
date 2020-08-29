@@ -1,5 +1,6 @@
 import React from "react";
 import { PostAPI } from "../api/PostAPI";
+import { PlusCircle, Check2, InfoCircle } from "react-bootstrap-icons";
 
 export class NovoPostComponent extends React.Component {
     state = {
@@ -35,9 +36,9 @@ export class NovoPostComponent extends React.Component {
     render() {
         return (
             <>
-                <div className="card">
+                <div className="card mt-3">
                     <div className="card-header">
-                        <h5 className="card-title">Novo Post</h5>
+                        <h5 className="card-title"><PlusCircle></PlusCircle>&nbsp;Novo Post</h5>
                     </div>
                     <div className="card-body">
                         <div className="form-group">
@@ -46,10 +47,10 @@ export class NovoPostComponent extends React.Component {
                                 value={this.state.texto}
                                 onChange={(event) => this.setPost(event)}
                             ></textarea>
-                            <small id="novo-post" className="form-text text-muted">Digite o conteúdo da sua publicação!</small>
+                            <small id="novo-post" className="form-text text-muted"><InfoCircle></InfoCircle> &nbsp;Digite o conteúdo da sua publicação!</small>
                         </div>
 
-                        <button className="btn btn-primary" type="button" onClick={(event) => this.save(event)}>Publicar</button>
+                        <button className="btn btn-primary" type="button" onClick={(event) => this.save(event)}>Publicar&nbsp;<Check2></Check2></button>
                     </div>
                 </div>
             </>

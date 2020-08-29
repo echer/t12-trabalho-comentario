@@ -1,5 +1,6 @@
 import React from "react";
 import { CommentAPI } from "../api/CommentAPI";
+import { Check2, PlusCircle, InfoCircle } from "react-bootstrap-icons";
 
 export class NovoComentarioComponent extends React.Component {
 
@@ -38,10 +39,10 @@ export class NovoComentarioComponent extends React.Component {
         return (
             <>
                 <div className="row">
-                    <div className="offset-md-2 col-md-10">
-                        <div className="card">
+                    <div className="offset-md-1 col-md-11">
+                        <div className="card mt-2 mr-2">
                             <div className="card-header">
-                                <h5 className="card-title">Novo Comentário</h5>
+                                <h5 className="card-title"><PlusCircle></PlusCircle>&nbsp;Novo Comentário</h5>
                             </div>
                             <div className="card-body">
                                 <div className="form-group">
@@ -50,9 +51,9 @@ export class NovoComentarioComponent extends React.Component {
                                         value={this.state.texto}
                                         onChange={(event) => this.setComentario(event)}
                                     ></textarea>
-                                    <small id="novo-comentario" className="form-text text-muted">Digite o conteúdo do comentário!</small>
+                                    <small id="novo-comentario" className="form-text text-muted"><InfoCircle></InfoCircle> &nbsp;Digite o conteúdo do comentário!</small>
                                 </div>
-                                <button className="btn btn-primary" type="button" onClick={(event) => this.save(event)}>Publicar</button>
+                                <button className="btn btn-primary" type="button" onClick={(event) => this.save(event)}>Publicar &nbsp;<Check2></Check2></button>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { PostAPI } from "../api/PostAPI";
 import { ComentarioComponent } from "./ComentarioComponent";
+import { Rss, SuitHeart, Clock, InfoCircle, PersonCircle } from 'react-bootstrap-icons';
 
 export class ListaPostComponent extends React.Component {
 
@@ -20,13 +21,13 @@ export class ListaPostComponent extends React.Component {
                 <>
                     {this.props.results.map((r) =>
                         (
-                            <div key={r.uuid}>
+                            <div className="card mt-2" key={r.uuid}>
                                 <div className="card-body">
-                                    <p className="card-text">{r.texto}</p>
-                                    <button className="btn btn-primary" type="button" onClick={() => this.incCurtida(r)}>Curtir {r.likes}</button>
+                                    <p className="card-text"><PersonCircle size="40"></PersonCircle> &nbsp;{r.texto}</p>
                                 </div>
                                 <div className="card-footer text-muted">
-                                    {r.datahora}
+                                    <button className="btn btn-danger" type="button" onClick={() => this.incCurtida(r)}>{r.likes} &nbsp;<SuitHeart></SuitHeart></button>
+                                    <span className="float-right"><Clock></Clock> &nbsp;{r.datahora}</span>
                                 </div>
                                 <ComentarioComponent uuid={r.uuid}></ComentarioComponent>
                             </div>
@@ -36,9 +37,7 @@ export class ListaPostComponent extends React.Component {
             );
         } else {
             return (
-                <div className="card-body">
-                    <p className="card-title">Nenuma publicação encontrada!</p>
-                </div>
+                <p className="card-title"><InfoCircle></InfoCircle> &nbsp;Nenuma publicação encontrada!</p>
             );
         }
     }
@@ -46,11 +45,13 @@ export class ListaPostComponent extends React.Component {
     render() {
         return (
             <>
-                <div className="card">
+                <div className="card mt-2">
                     <div className="card-header">
-                        <h5 className="card-title">Feed de Noticias</h5>
+                        <h5 className="card-title"><Rss></Rss>&nbsp;Feed de Noticias</h5>
                     </div>
-                    {this.getResults()}
+                    <div className="card-body">
+                        {this.getResults()}
+                    </div>
                 </div>
             </>
         )

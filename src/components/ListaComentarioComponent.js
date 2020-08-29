@@ -1,15 +1,16 @@
 import React from "react";
 import { CommentAPI } from "../api/CommentAPI";
+import { Clock, People, PeopleFill, InfoCircle, PersonCircle } from "react-bootstrap-icons";
 
 export class ListaComentarioComponent extends React.Component {
 
     state = {
-        
+
     };
 
 
     componentDidMount() {
-        
+
     }
 
     getResults() {
@@ -19,12 +20,12 @@ export class ListaComentarioComponent extends React.Component {
                     {this.props.results.map((r) =>
                         (
                             <div key={r.uuid}>
-                                <div className="card">
+                                <div className="card m-2">
                                     <div className="card-body">
-                                        <p className="card-text">{r.texto}</p>
+                                        <p className="card-text"><PersonCircle size="40"></PersonCircle> &nbsp;{r.texto}</p>
                                     </div>
                                     <div className="card-footer text-muted">
-                                        {r.datahora}
+                                        <span className="float-right"><Clock></Clock>&nbsp; {r.datahora}</span>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +37,7 @@ export class ListaComentarioComponent extends React.Component {
         } else {
             return (
                 <div className="card-body">
-                    <p className="card-title">Ninguem comentou essa publicação ainda!</p>
+                    <p className="card-title"><InfoCircle></InfoCircle>&nbsp; Ninguem comentou essa publicação ainda!</p>
                 </div>
             );
         }
@@ -45,11 +46,11 @@ export class ListaComentarioComponent extends React.Component {
     render() {
         return (
             <>
-                <div className="row">
-                    <div className="offset-md-2 col-md-10">
-                        <div className="card">
+                <div className="row mt-3">
+                    <div className="offset-md-1 col-md-11">
+                        <div className="card mr-2 ">
                             <div className="card-header">
-                                <h5 className="card-title">Comentários</h5>
+                                <h5 className="card-title"><People></People> &nbsp; Comentários</h5>
                             </div>
                             {this.getResults()}
                         </div>
