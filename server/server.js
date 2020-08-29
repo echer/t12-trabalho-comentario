@@ -46,7 +46,6 @@ express.get("/comentarios/:uuid", function (request, response) {
     );
   });
   promise.then((comentarios) => {
-    console.log(JSON.stringify(comentarios));
     response.json(comentarios);
   });
 });

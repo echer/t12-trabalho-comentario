@@ -30,7 +30,7 @@ export class ListaComentarioComponent extends React.Component {
                                         <p className="card-text">{r.texto}</p>
                                     </div>
                                     <div className="card-footer text-muted">
-                                        Data: {r.datahora}
+                                        {r.datahora}
                                     </div>
                                 </div>
                             </div>

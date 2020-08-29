@@ -9,8 +9,22 @@ export class ListaPostComponent extends React.Component {
     };
 
     componentDidMount() {
+        this.findAll();
+    }
+
+    findAll() {
         PostAPI.getAll().then((posts) => {
             this.setState({ results: posts.data });
+        }).catch((error) => {
+            alert("Error: " + error);
+            debugger;
+        });
+    }
+
+    incCurtida(post) {
+        post.likes = post.likes + 1;
+        PostAPI.update(post).then((result) => {
+            this.findAll();
         }).catch((error) => {
             alert("Error: " + error);
             debugger;
@@ -26,10 +40,10 @@ export class ListaPostComponent extends React.Component {
                             <div key={r.uuid}>
                                 <div className="card-body">
                                     <p className="card-text">{r.texto}</p>
-                                    <p className="card-text">Curtidas: {r.likes}</p>
+                                    <button className="btn btn-primary" type="button" onClick={() => this.incCurtida(r)}>Curtir {r.likes}</button>
                                 </div>
                                 <div className="card-footer text-muted">
-                                    Data: {r.datahora}
+                                    {r.datahora}
                                 </div>
                                 <ComentarioComponent uuid={r.uuid}></ComentarioComponent>
                             </div>
