@@ -19,7 +19,12 @@ export class NovoPostComponent extends React.Component {
 
     save(event) {
         if (this.state.texto === "") {
-            toast.warn("Digite o post!");
+            toast.warn("Digite o conteúdo da publicação!");
+            return;
+        }
+
+        if (this.state.titulo === "") {
+            toast.warn("Digite o titulo da publicação!");
             return;
         }
 
