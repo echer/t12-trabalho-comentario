@@ -5,11 +5,16 @@ import { toast } from "react-toastify";
 
 export class NovoPostComponent extends React.Component {
     state = {
-        texto: ""
+        texto: "",
+        titulo: ""
     };
 
     setPost(event) {
         this.setState({ texto: event.target.value });
+    }
+
+    setTitulo(event) {
+        this.setState({ titulo: event.target.value });
     }
 
     save(event) {
@@ -20,7 +25,9 @@ export class NovoPostComponent extends React.Component {
 
         var obj = {
             texto: this.state.texto,
-            likes: 0
+            titulo: this.state.titulo,
+            likes: 0,
+            unlike: 0
         };
         PostAPI.add(obj).then((resp) => {
             toast.success("Publicação realizada!")
@@ -41,6 +48,16 @@ export class NovoPostComponent extends React.Component {
                     </div>
                     <div className="card-body">
                         <div className="form-group">
+                            <label htmlFor="novo-post-titulo">Título</label>
+                            <input className="form-control"
+                                id="novo-post-titulo"
+                                value={this.state.titulo}
+                                onChange={(event) => this.setTitulo(event)}
+                            ></input>
+                            <small id="novo-post-titulo" className="form-text text-muted"><InfoCircle></InfoCircle> &nbsp;Digite o título da sua publicação!</small>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="novo-post-titulo">Conteúdo</label>
                             <textarea className="form-control"
                                 id="novo-post"
                                 value={this.state.texto}

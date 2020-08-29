@@ -1,6 +1,5 @@
 import React from "react";
-import { CommentAPI } from "../api/CommentAPI";
-import { Clock, People, PeopleFill, InfoCircle, PersonCircle } from "react-bootstrap-icons";
+import { Clock, People, InfoCircle, PersonCircle } from "react-bootstrap-icons";
 
 export class ListaComentarioComponent extends React.Component {
 

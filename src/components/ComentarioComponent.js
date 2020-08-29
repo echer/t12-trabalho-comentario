@@ -2,7 +2,7 @@ import React from "react";
 import { NovoComentarioComponent } from './NovoComentarioComponent';
 import { ListaComentarioComponent } from './ListaComentarioComponent';
 import { CommentAPI } from "../api/CommentAPI";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export class ComentarioComponent extends React.Component {
 

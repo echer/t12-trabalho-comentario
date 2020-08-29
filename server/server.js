@@ -91,6 +91,7 @@ express.put("/posts/:uuid", function (request, response) {
   });
   promise.then((post) => {
     post.likes = request.body.likes;
+    post.unlike = request.body.unlike;
     response.json();
   });
 });
